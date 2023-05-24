@@ -1,0 +1,21 @@
+[
+    {
+        "function": "minecraft:copy_nbt",
+        "source": {
+            "type": "minecraft:storage",
+            "source": "player_inv:temp"
+        },
+        "ops": [
+            {
+                "source": "Name",
+                "target": "tag.display.Name",
+                "op": "replace"
+            },
+            {
+                "source": "Lore",
+                "target": "tag.display.Lore",
+                "op": "replace"
+            }
+        ]
+    }
+]
