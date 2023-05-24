@@ -1,3 +1,3 @@
-function player_inv:slots/skip
-execute if score #slot_count temp matches 1.. run function player_inv:slots/check_slot
-execute if score #slot_count temp matches ..0 run scoreboard players reset #slot temp
+function gm4_translation_patcher:player_inv/slots/skip
+execute if score #slot_count gm4_translation_value matches 1.. run function gm4_translation_patcher:player_inv/slots/check_slot
+execute if score #slot_count gm4_translation_value matches ..0 run scoreboard players reset #slot gm4_translation_value

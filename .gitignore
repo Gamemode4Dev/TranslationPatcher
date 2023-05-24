@@ -1,2 +1,3 @@
 out
 .beet_cache
+__pycache__

@@ -6,3 +6,6 @@ data_pack:
   load: src
 
 output: out
+
+pipeline:
+  - beet_pipeline

@@ -1,3 +1,3 @@
-execute if score #slot temp matches 20 run function player_inv:slots/inventory/11
-execute if score #slot temp matches 19 run function player_inv:slots/inventory/10
-execute if score #slot temp matches 18 run function player_inv:slots/inventory/9
+execute if score #slot gm4_translation_value matches 20 run function gm4_translation_patcher:player_inv/slots/inventory/11
+execute if score #slot gm4_translation_value matches 19 run function gm4_translation_patcher:player_inv/slots/inventory/10
+execute if score #slot gm4_translation_value matches 18 run function gm4_translation_patcher:player_inv/slots/inventory/9
