@@ -1,0 +1,8 @@
+id: gm4_translation_patcher
+name: 1.19.4 Translation Patcher
+description: A datapack utility to fix broken text on Gamemode 4 items that occured during the 1.19.4 update
+
+data_pack:
+  load: src
+
+output: out
