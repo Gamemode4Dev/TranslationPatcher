@@ -8,12 +8,12 @@
         "ops": [
             {
                 "source": "Name",
-                "target": "tag.display.Name",
+                "target": "display.Name",
                 "op": "replace"
             },
             {
                 "source": "Lore",
-                "target": "tag.display.Lore",
+                "target": "display.Lore",
                 "op": "replace"
             }
         ]

@@ -9,7 +9,11 @@ def beet_default(ctx: Context):
 
     for k, v in tree_files.items():
         ctx.data.functions[f"gm4_translation_patcher:{k}"] = Function((
-            f"item modify entity @s {v} gm4_translation_patcher:main\n"
             "function gm4_translation_patcher:player_inv/store_text\n"
+            "function gm4_translation_patcher:update_text\n"
+            f"item modify entity @s {v} gm4_translation_patcher:main\n"
             "function gm4_translation_patcher:player_inv/slots/next"
         ))
+
+    # text replacement function
+    ctx.data.functions["gm4_translation_patcher:update_text"] = Function("data modify storage player_inv:temp Name set value '{\"text\":\"my new name\"}'")
