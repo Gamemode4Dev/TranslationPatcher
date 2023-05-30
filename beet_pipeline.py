@@ -1,4 +1,5 @@
 from beet import Context, Function
+import csv
 
 def beet_default(ctx: Context):
 
@@ -16,4 +17,10 @@ def beet_default(ctx: Context):
         ))
 
     # text replacement function
-    ctx.data.functions["gm4_translation_patcher:update_text"] = Function("data modify storage player_inv:temp Name set value '{\"text\":\"my new name\"}'")
+    function_lines = []
+    with open('name_replacements.csv') as f:
+        reader = csv.reader(f, delimiter="|")
+        for old, new in reader:
+            function_lines.append(f"execute if data storage player_inv:temp {{Name:'{old}'}} run data modify storage player_inv:temp Name set value '{new}'")
+    # ctx.data.functions["gm4_translation_patcher:update_text"] = Function("data modify storage player_inv:temp Name set value '{\"text\":\"my new name\"}'")
+    ctx.data.functions["gm4_translation_patcher:update_text"] = Function(function_lines)
