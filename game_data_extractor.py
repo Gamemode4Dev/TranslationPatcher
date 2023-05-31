@@ -34,8 +34,8 @@ for old_item, new_item in zip(old_items, new_items):
 
 # output to csv files
 with open('name_replacements.csv', 'w') as f:
-    writer = csv.writer(f, delimiter="|")
+    writer = csv.writer(f, delimiter="|", lineterminator="\n")
     writer.writerows(name_conversions)
 with open('lore_replacements.csv', 'w') as f:
-    writer = csv.writer(f, delimiter="|")
+    writer = csv.writer(f, delimiter="|", lineterminator="\n")
     writer.writerows(lore_conversions)

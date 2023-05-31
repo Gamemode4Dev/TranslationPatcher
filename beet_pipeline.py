@@ -22,12 +22,16 @@ def beet_default(ctx: Context):
     with open('name_replacements.csv') as f:
         reader = csv.reader(f, delimiter="|")
         for old, new in reader:
-            function_lines.append(f"execute if data storage player_inv:temp {{Name:'{old}'}} run data modify storage player_inv:temp Name set value '{new}'")
+            escaped_old = old.replace('\'', '\\\'')
+            escaped_new = new.replace('\'', '\\\'')
+            function_lines.append(f"execute if data storage player_inv:temp {{Name:'{escaped_old}'}} run data modify storage player_inv:temp Name set value '{escaped_new}'")
     ctx.data.functions["gm4_translation_patcher:update_name"] = Function(function_lines)
 
     function_lines = []
     with open('lore_replacements.csv') as f:
         reader = csv.reader(f, delimiter="|")
         for old, new in reader:
-            function_lines.append(f"execute if data storage player_inv:temp {{LoreLine:'{old}'}} run data modify storage player_inv:temp LoreLine set value '{new}'")
+            escaped_old = old.replace('\'', '\\\'')
+            escaped_new = new.replace('\'', '\\\'')
+            function_lines.append(f"execute if data storage player_inv:temp {{LoreLine:'{escaped_old}'}} run data modify storage player_inv:temp LoreLine set value '{escaped_new}'")
     ctx.data.functions["gm4_translation_patcher:update_lore"] = Function(function_lines)
