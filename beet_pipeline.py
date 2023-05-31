@@ -11,7 +11,8 @@ def beet_default(ctx: Context):
     for k, v in tree_files.items():
         ctx.data.functions[f"gm4_translation_patcher:{k}"] = Function((
             "function gm4_translation_patcher:player_inv/store_text\n"
-            "function gm4_translation_patcher:update_text\n"
+            "function gm4_translation_patcher:update_name\n"
+            "function gm4_translation_patcher:lore/start\n"
             f"item modify entity @s {v} gm4_translation_patcher:main\n"
             "function gm4_translation_patcher:player_inv/slots/next"
         ))
@@ -22,5 +23,11 @@ def beet_default(ctx: Context):
         reader = csv.reader(f, delimiter="|")
         for old, new in reader:
             function_lines.append(f"execute if data storage player_inv:temp {{Name:'{old}'}} run data modify storage player_inv:temp Name set value '{new}'")
-    # ctx.data.functions["gm4_translation_patcher:update_text"] = Function("data modify storage player_inv:temp Name set value '{\"text\":\"my new name\"}'")
-    ctx.data.functions["gm4_translation_patcher:update_text"] = Function(function_lines)
+    ctx.data.functions["gm4_translation_patcher:update_name"] = Function(function_lines)
+
+    function_lines = []
+    with open('lore_replacements.csv') as f:
+        reader = csv.reader(f, delimiter="|")
+        for old, new in reader:
+            function_lines.append(f"execute if data storage player_inv:temp {{LoreLine:'{old}'}} run data modify storage player_inv:temp LoreLine set value '{new}'")
+    ctx.data.functions["gm4_translation_patcher:update_lore"] = Function(function_lines)
